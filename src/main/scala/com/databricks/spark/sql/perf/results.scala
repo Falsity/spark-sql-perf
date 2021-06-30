@@ -16,8 +16,6 @@
 
 package com.databricks.spark.sql.perf
 
-import com.databricks.spark.sql.perf.mllib.ReflectionUtils
-
 /**
  * The performance results of all given queries for a single iteration.
  *
@@ -149,21 +147,6 @@ class MLParams(
     val smoothing: Option[Double] = None,
     val tol: Option[Double] = None,
     val vocabSize: Option[Int] = None) {
-
-  /**
-   * Returns a map of param names to string representations of their values. Only params that
-   * were defined (i.e., not equal to None) are included in the map.
-   */
-  def toMap: Map[String, String] = {
-    // Only outputs params that have values
-    val allParams = ReflectionUtils.getConstructorArgs(this)
-    allParams.flatMap {
-      case (key: String, Some(value: Any)) =>
-        Some(key -> value.toString)
-      case _ =>
-        None
-    }
-  }
 
   /** Returns a copy of the current MLParams instance */
   def copy(

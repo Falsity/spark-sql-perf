@@ -19,3 +19,7 @@ src_managed/
 project/boot/
 project/plugins/project/
 performance/
+
+performance-datasets/
+metastore_db/
+tmp_tpcds_run.scala

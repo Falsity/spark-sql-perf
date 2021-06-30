@@ -42,7 +42,7 @@ class DSDGEN(dsdgenDir: String) extends DataGenerator {
         val parallel = if (partitions > 1) s"-parallel $partitions -child $i" else ""
         val commands = Seq(
           "bash", "-c",
-          s"cd $localToolsDir && ./dsdgen -table $name -filter Y -scale $scaleFactor -RNGSEED 100 $parallel")
+          s"cd $localToolsDir && ./dsdgen -table $name -filter Y -scale $scaleFactor -RNGSEED 100 $parallel 2>/dev/null")
         println(commands)
         BlockingLineStream(commands)
       }

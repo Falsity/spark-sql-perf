@@ -9,7 +9,7 @@ scalaVersion := "2.12.10"
 
 crossScalaVersions := Seq("2.12.10")
 
-resolvers ++= Seq(
+fullResolvers := Seq(
   "aliyun-maven-public" at "https://maven.aliyun.com/repository/public",
   "aliyun-maven-central" at "https://maven.aliyun.com/repository/central"
 )

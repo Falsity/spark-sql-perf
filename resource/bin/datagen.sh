@@ -37,7 +37,7 @@ cd "${baseDir}" || exit
 while true; do
     read -p "Do you wish to generate TPC-DS data in ${dataDir}? It will be override! (Y/N) " yn
     case $yn in
-        [Yy]* ) make install; break;;
+        [Yy]* ) break;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac

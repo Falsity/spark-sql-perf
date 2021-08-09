@@ -1,6 +1,6 @@
 # 天池EMR TPC-DS性能大赛Benchmark工具
 
-Benchmark工具基于 [spark-sqk-perf](https://github.com/databricks/spark-sql-perf) 定制修改，用于天池EMR TPC-DS性能大赛选手进行Spark优化自测。选手在天池提交Spark包进行评测时，也会使用相同的Benchmark工具在比赛提供的EMR集群上运行。TPC-DS测试数据集由 [tpcds-kit](https://github.com/databricks/tpcds-kit) 工具生成，已经集成在该项目`resource/tpcds-kit`目录中。
+Benchmark工具基于 [spark-sql-perf](https://github.com/databricks/spark-sql-perf) 定制修改，用于天池EMR TPC-DS性能大赛选手进行Spark优化自测。选手在天池提交Spark包进行评测时，也会使用相同的Benchmark工具在比赛提供的EMR集群上运行。TPC-DS测试数据集由 [tpcds-kit](https://github.com/databricks/tpcds-kit) 工具生成，已经集成在该项目`resource/tpcds-kit`目录中。
 
 ## 使用说明
 ### tpcds-kit工具编译
@@ -30,6 +30,13 @@ bash datagen.sh
 * DATA_LOCATION：数据集存储目录，与生成数据集时配置内容相同，生成数据集配置后无需修改
 * SPARK_DIR：选手优化后Spark安装目录
 * TPCDS_RUN_SPARK_MASTER：Benchmark运行的spark程序的master，本地测试需要填写local[N]，其中N为所使用的CPU核心数
+
+配置完成后，运行`run_tpcds.sh`脚本执行测试。
+```bash
+cd resource/bin
+vim params.conf
+bash run_tpcds.sh
+```
 
 Benchmark默认会执行所有生成的query，可以修改`src/main/notebooks/tpcds_run_emr.scala`脚本中的query_filter变量进行query指定。
 ```scala
